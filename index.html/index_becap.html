@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#a90012">
+<title>Adega do Alemão</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red: #a90012;
+  --gold: #e9bd58;
+  --dark: #171717;
+  --bg: #f5f5f6;
+  --green: #16864a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: Montserrat, Arial, sans-serif;
+  color: #222;
+}
+
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+.top {
+  background: #171717;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--red);
+  color: white;
+  box-shadow: 0 4px 14px #0002;
+}
+
+.head {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 190px;
+  color: white;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 64px;
+  height: 64px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  background: white;
+  padding: 4px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+.brand b { font-size: 16px; line-height: 1.1; }
+
+.brand small {
+  display: block;
+  font-size: 9px;
+  color: #ffe4a2;
+  margin-top: 5px;
+}
+
+.search {
+  display: flex;
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.search input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  border: 0;
+  outline: 0;
+}
+
+.search button {
+  border: 0;
+  background: var(--gold);
+  font-weight: 900;
+  padding: 0 15px;
+}
+
+.cartbtn {
+  background: #80000c;
+  color: white;
+  border: 1px solid #ffffff66;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.count {
+  background: var(--gold);
+  color: #111;
+  border-radius: 20px;
+  padding: 2px 6px;
+}
+
+nav {
+  background: #80000c;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+nav button {
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: white;
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+nav button.active,
+nav button:hover {
+  border-color: var(--gold);
+}
+
+.hero {
+  color: white;
+  background:
+    radial-gradient(circle at 80% 15%, #ffd97538, transparent 28%),
+    linear-gradient(115deg, #51000a, #b20a1b 58%, #24100c);
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 38px 22px;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  align-items: center;
+  gap: 24px;
+}
+
+.tag {
+  color: #ffdf8c;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  padding: 7px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 4vw, 45px);
+  line-height: 1.08;
+  margin: 17px 0 10px;
+  font-weight: 900;
+}
+
+.hero p {
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 620px;
+  color: #ffebdc;
+}
+
+.goldbtn, .outlinebtn {
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.goldbtn {
+  background: var(--gold);
+  border: 0;
+  color: #241900;
+}
+
+.outlinebtn {
+  background: transparent;
+  color: white;
+  border: 1px solid #ffffff88;
+  margin-left: 7px;
+}
+
+.stamp {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    box-shadow: none;
+}
+
+.stamp img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+}
+
+.benefits, .section {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 18px;
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.benefit {
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.benefit i { font-style: normal; font-size: 25px; }
+.benefit b { display: block; font-size: 11px; }
+
+.benefit span {
+  display: block;
+  color: #666;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.section { margin-top: 34px; }
+
+.secthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 17px;
+}
+
+.secthead h2 {
+  font-size: 21px;
+  margin: 0;
+  font-weight: 900;
+}
+
+.secthead p {
+  font-size: 11px;
+  color: #666;
+  margin: 7px 0 0;
+}
+
+.events, .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.event {
+  position: relative;
+  overflow: hidden;
+  border-radius: 13px;
+  padding: 20px;
+  color: white;
+  min-height: 155px;
+  background: linear-gradient(135deg, #29100e, #a90012);
+}
+
+.event:nth-child(2) { background: linear-gradient(135deg, #202020, #65101a); }
+.event:nth-child(3) { background: linear-gradient(135deg, #65100e, #bd711b); }
+
+.event .date {
+  font-size: 10px;
+  color: #ffe28d;
+  font-weight: 900;
+}
+
+.event h3 { font-size: 18px; margin: 12px 0 7px; }
+
+.event p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #ffeded;
+  max-width: 90%;
+}
+
+.fake {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 8px;
+  border: 1px solid #ffffff75;
+  padding: 5px 7px;
+  border-radius: 20px;
+}
+
+.grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.product {
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  height: 170px;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+  overflow: hidden;
+}
+
+.photo img { width: 100%; height: 100%; object-fit: contain; }
+
+.info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cat {
+  font-size: 9px;
+  color: var(--red);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info h3 { font-size: 13px; margin: 7px 0; }
+
+.info p {
+  font-size: 10px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.price { font-size: 16px; font-weight: 900; }
+
+.add {
+  border: 0;
+  border-radius: 7px;
+  background: var(--red);
+  color: white;
+  padding: 10px;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  color: #666;
+}
+
+.location {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: white;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.loccopy { padding: 24px; }
+.loccopy h3 { margin: 0 0 10px; }
+
+.loccopy p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #666;
+}
+
+.loccopy a { color: var(--red); font-weight: 800; }
+
+.map {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  border: 0;
+}
+
+footer { margin-top: 40px; background: #171717; color: white; }
+
+.foot {
+  max-width: 1200px;
+  margin: auto;
+  padding: 26px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.foot p { font-size: 11px; color: #ccc; line-height: 1.7; }
+
+.wa {
+  background: var(--green);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.adminlink {
+  background: transparent;
+  color: #ddd;
+  border: 1px solid #777;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 11px;
+}
+
+.overlay, .modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0009;
+  z-index: 30;
+}
+
+.overlay.show { display: flex; justify-content: flex-end; }
+
+.drawer {
+  background: white;
+  width: min(450px, 100%);
+  height: 100%;
+  overflow: auto;
+  padding: 20px;
+}
+
+.dhead, .modalhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 13px;
+}
+
+.dhead h2, .modalhead h2 { font-size: 20px; margin: 0; }
+.x { border: 0; border-radius: 7px; padding: 8px 11px; }
+
+.cartline {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cartline b { font-size: 12px; }
+.cartline small { display: block; color: #666; margin-top: 4px; }
+
+.qty { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+
+.qty button {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 27px;
+  height: 27px;
+}
+
+.totalrow {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.totalrow.final {
+  font-size: 18px;
+  font-weight: 900;
+  border-top: 1px dashed #ddd;
+  padding-top: 12px;
+}
+
+.checkout, .adminform { display: grid; gap: 10px; margin-top: 15px; }
+
+.checkout label, .adminform label {
+  font-size: 11px;
+  font-weight: 800;
+  display: grid;
+  gap: 6px;
+}
+
+.checkout input, .checkout select, .checkout textarea,
+.adminform input, .adminform select, .adminform textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 12px;
+}
+
+.submit {
+  background: var(--green);
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 13px;
+  font-weight: 900;
+}
+
+.note { font-size: 10px; color: #666; line-height: 1.5; }
+
+.modal {
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  overflow: auto;
+}
+
+.modal.show { display: flex; }
+
+.modalbox {
+  width: min(760px, 100%);
+  max-height: 95vh;
+  overflow: auto;
+  background: white;
+  border-radius: 13px;
+  padding: 20px;
+}
+
+.adminform { grid-template-columns: 1fr 1fr; }
+.full { grid-column: 1 / -1; }
+
+.adminbuttons { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.adminprimary, .adminsecondary {
+  border: 0;
+  border-radius: 7px;
+  padding: 11px 14px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.adminprimary { background: var(--red); color: white; }
+.adminsecondary { background: #eee; }
+
+.status {
+  font-size: 12px;
+  background: #f4f4f4;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.adminitem {
+  display: grid;
+  grid-template-columns: 45px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.adminitem img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  background: #f2f2f2;
+}
+
+.adminitem b { font-size: 11px; display: block; }
+.adminitem small { font-size: 10px; color: #666; }
+
+.adminitem button {
+  border: 0;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 10px;
+}
+
+.danger { background: #ffe4e4; color: #900; }
+.hide { display: none !important; }
+
+@media (max-width: 800px) {
+  .head { padding: 10px; gap: 8px; flex-wrap: wrap; }
+  .brand { min-width: 0; flex: 1; }
+  .brand img { width: 43px; height: 43px; }
+  .brand b { font-size: 14px; }
+  .search { order: 3; flex-basis: 100%; }
+  .hero-inner { grid-template-columns: 1fr; padding: 28px 16px; }
+  .stamp { display: none; }
+  .benefits { padding: 0 10px; gap: 7px; }
+  .benefit { padding: 10px; gap: 6px; }
+  .benefit i { font-size: 20px; }
+  .benefit b { font-size: 9px; }
+  .benefit span { font-size: 9px; }
+  .section { padding: 0 10px; }
+  .events { grid-template-columns: 1fr; }
+  .event { min-height: 140px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .photo { height: 135px; }
+  .info { padding: 10px; }
+  .location { grid-template-columns: 1fr; }
+  .map { min-height: 240px; }
+  .adminform { grid-template-columns: 1fr; }
+  .full { grid-column: auto; }
+  .secthead h2 { font-size: 18px; }
+}
+
+@media (max-width: 390px) {
+  .cartbtn { font-size: 10px; padding: 9px; }
+  .photo { height: 115px; }
+  .price { font-size: 14px; }
+  .add { padding: 8px; }
+}
+</style>
+</head>
+
+<body>
+<div class="top">🍻 ADEGA DO ALEMÃO • BEBIDAS • CONVENIÊNCIA • TABACARIA</div>
+
+<header>
+  <div class="head">
+    <a class="brand" href="#">
+    <img
+        src="imagens/logo-adega.jpg"
+        alt="Logo Adega do Alemão"
+        onerror="this.style.display='none'"
+    >
+
+    <span>
+        <b>ADEGA DO<br>ALEMÃO</b>
+        <small>BEBIDAS • CONVENIÊNCIA</small>
+    </span>
+</a>
+
+    <form class="search" id="searchForm">
+      <input id="search" placeholder="O que você está procurando?" aria-label="Buscar produtos">
+      <button>BUSCAR</button>
+    </form>
+
+    <button class="cartbtn" onclick="openCart()">
+      🛒 Carrinho <span class="count" id="count">0</span>
+    </button>
+  </div>
+</header>
+
+<nav id="nav">
+  <button class="active" data-cat="Todos">TODOS</button>
+  <button data-cat="Cervejas">CERVEJAS</button>
+  <button data-cat="Destilados">DESTILADOS</button>
+  <button data-cat="Vinhos">VINHOS</button>
+  <button data-cat="Sem álcool">SEM ÁLCOOL</button>
+  <button data-cat="Conveniência">CONVENIÊNCIA</button>
+  <button data-cat="Tabacaria">TABACARIA</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="tag">🍻 SUA ADEGA DE CONFIANÇA</span>
+      <h1>O seu próximo brinde começa aqui.</h1>
+      <p>
+        Bebidas, conveniência e aquele atendimento de parceiro.
+        Escolha seus produtos, monte seu pedido e envie diretamente
+        pelo WhatsApp.
+      </p>
+      <button class="goldbtn" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
+        VER PRODUTOS
+      </button>
+      <button class="outlinebtn" onclick="openCart()">MEU CARRINHO</button>
+    </div>
+
+    <div class="stamp">
+    <img
+        src="imagens/logo-adega.jpg"
+        alt="Logo Adega do Alemão"
+    >
+    </div>
+</section>
+
+<section class="section" id="eventos">
+  <div class="secthead">
+    <div>
+      <h2>Próximos Eventos</h2>
+    <p>Confira a programação da Adega do Alemão.</p>    
+    </div>
+  </div>
+
+  <div class="events">
+
+  <article class="event">
+    <span class="date">🎧 SÁBADO • 24 DE OUTUBRO</span>
+    <h3>DJ MATEUS NO COMANDO</h3>
+    <p>
+      Muito funk, open pista e aquela resenha que só a Adega do Alemão proporciona.
+      Chame a galera e venha curtir.
+    </p>
+    <span class="fake">A PARTIR DAS 20H</span>
+  </article>
+
+  <article class="event">
+    <span class="date">🎧 SÁBADO • 31 DE OUTUBRO</span>
+    <h3>NOITE DO FLASHBACK</h3>
+    <p>
+      DJ ao vivo tocando os maiores sucessos do funk, pagode e hits que marcaram época.
+    </p>
+    <span class="fake">DJ AO VIVO • 20H</span>
+  </article>
+
+  <article class="event">
+    <span class="date">🎧 SÁBADO • 07 DE NOVEMBRO</span>
+    <h3>BAILE DA ADEGA</h3>
+    <p>
+      Edição especial com DJ convidado, promoções de bebidas e muita música até o final da noite.
+    </p>
+    <span class="fake">ENTRADA GRATUITA</span>
+  </article>
+
+</div>
+</section>
+
+<section class="section" id="eventos" style="margin-top:40px;">
+  <div class="secthead">
+    <div>
+      <h2>Nosso catálogo</h2>
+      <p>Escolha os produtos para adicionar ao seu carrinho.</p>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+    <div class="empty">Carregando produtos...</div>
+  </div>
+</section>
+
+<section class="section" id="localizacao">
+  <div class="secthead">
+    <div>
+      <h2>Venha conhecer a adega</h2>
+      <p>Consulte a localização e fale conosco.</p>
+    </div>
+  </div>
+
+  <div class="location">
+    <div class="loccopy">
+      <h3>📍 Adega do Alemão</h3>
+
+<p>
+  <strong>Endereço:</strong><br>
+  R. Batalha Reis, 228<br>
+  Jardim São Bento Novo<br>
+  São Paulo - SP<br>
+  CEP: 05882-360
+</p>
+
+<p>
+  Venha conhecer nossa adega, conferir as promoções e
+  aproveitar nossos eventos e atrações especiais
+</p>
+      <p><a id="locwa" href="#" target="_blank" rel="noopener">Falar pelo WhatsApp</a></p>
+    </div>
+
+    <iframe
+      class="map"
+      title="Mapa da região"
+      src="https://maps.google.com/maps?q=R.+Batalha+Reis,+228+-+Jardim+São+Bento+Novo,+São+Paulo+-+SP,+05882-360&z=17&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <strong>ADEGA DO ALEMÃO</strong>
+      <p>Bebidas • Conveniência • Tabacaria</p>
+    </div>
+
+    <div>
+      <a class="wa" id="footwa" href="#" target="_blank" rel="noopener">WHATSAPP</a>
+      <button class="adminlink" onclick="openAdmin()">ÁREA ADMINISTRATIVA</button>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="cart" onclick="if(event.target===this)closeCart()">
+  <aside class="drawer">
+    <div class="dhead">
+      <h2>🛒 Seu carrinho</h2>
+      <button class="x" onclick="closeCart()">✕</button>
+    </div>
+
+    <div id="cartlines"></div>
+    <div id="totals"></div>
+
+    <form class="checkout" id="checkout">
+      <label>Seu nome
+        <input id="nomeCliente" required placeholder="Digite seu nome">
+      </label>
+
+      <label>Telefone para contato
+        <input id="telefoneCliente" required type="tel" placeholder="(11) 99999-9999">
+      </label>
+
+      <label>Como deseja receber?
+        <select id="tipo">
+          <option value="retirada">Retirar na adega</option>
+          <option value="entrega">Receber por entrega</option>
+        </select>
+      </label>
+
+      <label id="enderecoLabel" class="hide">Endereço de entrega
+        <input id="endereco" placeholder="Rua, número, bairro e complemento">
+      </label>
+
+      <label>Observações
+        <textarea id="obs" rows="2" placeholder="Alguma informação para o pedido?"></textarea>
+      </label>
+
+      <p class="note">O pedido será enviado pelo WhatsApp para confirmação de disponibilidade e valor final.</p>
+      <button class="submit" type="submit">FINALIZAR PELO WHATSAPP</button>
+    </form>
+  </aside>
+</div>
+
+<div class="modal" id="admin" onclick="if(event.target===this)closeAdmin()">
+  <div class="modalbox">
+    <div class="modalhead">
+      <h2>⚙️ Painel administrativo</h2>
+      <button class="x" onclick="closeAdmin()">✕</button>
+    </div>
+
+    <div id="status" class="status">Conectando ao Supabase...</div>
+
+    <form id="login" class="checkout">
+      <label>E-mail do administrador
+        <input id="email" type="email" required placeholder="Seu e-mail">
+      </label>
+      <label>Senha
+        <input id="senha" type="password" required placeholder="Sua senha">
+      </label>
+      <button class="submit" type="submit">ENTRAR</button>
+      <p class="note">O acesso deve ser criado no sistema de autenticação do Supabase.</p>
+    </form>
+
+    <div id="workspace" class="hide">
+      <div class="adminbuttons">
+        <button class="adminprimary" onclick="newProduct()">+ NOVO PRODUTO</button>
+        <button class="adminsecondary" onclick="loadAdmin()">ATUALIZAR LISTA</button>
+        <button class="adminsecondary" onclick="logout()">SAIR</button>
+      </div>
+
+      <form class="adminform hide" id="productForm">
+        <input id="pid" type="hidden">
+
+        <label>Nome do produto
+          <input id="pnome" required maxlength="150">
+        </label>
+
+        <label>Preço em reais
+          <input id="ppreco" type="number" required min="0" step="0.01">
+        </label>
+
+        <label>Categoria
+          <select id="pcat" required>
+            <option value="Cervejas">Cervejas</option>
+            <option value="Destilados">Destilados</option>
+            <option value="Vinhos">Vinhos</option>
+            <option value="Sem álcool">Sem álcool</option>
+            <option value="Conveniência">Conveniência</option>
+            <option value="Tabacaria">Tabacaria</option>
+          </select>
+        </label>
+
+        <label>Foto do produto
+          <input id="pfoto" type="file" accept="image/*">
+        </label>
+
+        <label class="full">Descrição
+          <textarea id="pdesc" rows="3"></textarea>
+        </label>
+
+        <label class="full">
+          <span><input id="pativo" type="checkbox" checked> Produto visível no site</span>
+        </label>
+
+        <div class="adminbuttons full">
+          <button class="adminprimary" type="submit">SALVAR PRODUTO</button>
+          <button class="adminsecondary" type="button" onclick="cancelEdit()">CANCELAR</button>
+        </div>
+      </form>
+
+      <h3>Produtos cadastrados</h3>
+      <div id="adminlist">Entre para carregar os produtos.</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* CONFIGURAÇÃO DO SUPABASE */
+const SUPABASE_URL = 'https://apweqmypnbeyxdiqkrcq.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Pt6rb5DWraAARLGB5RsNtw_ttbDL9l3';
+const WHATSAPP = '5511996092563';
+const TAXA = 10;
+const TABLE = 'adega_produtos';
+const BUCKET = 'adega-produtos';
+
+const db = window.supabase
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+  : null;
+
+let produtos = [];
+let carrinho = {};
+let categoria = 'Todos';
+let busca = '';
+let adminUser = null;
+
+const brl = v => Number(v || 0).toLocaleString('pt-BR', {
+  style: 'currency',
+  currency: 'BRL'
+});
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+}[c]));
+
+document.getElementById('footwa').href =
+  document.getElementById('locwa').href =
+  'https://wa.me/' + WHATSAPP;
+
+/* CARREGAR PRODUTOS DO SUPABASE */
+async function loadProducts() {
+  const grid = document.getElementById('grid');
+
+  if (!db) {
+    grid.innerHTML = '<div class="empty">Não foi possível conectar ao catálogo.</div>';
+    return;
+  }
+
+  const { data, error } = await db
+    .from(TABLE)
+    .select('*')
+    .eq('ativo', true)
+    .order('nome');
+
+  if (error) {
+    console.error(error);
+    grid.innerHTML = '<div class="empty">Catálogo ainda não configurado. Execute o SQL de instalação no Supabase.</div>';
+    return;
+  }
+
+  produtos = (data || []).map(p => ({
+    ...p,
+    id: Number(p.id),
+    preco: Number(p.preco),
+    imagem: p.imagem_url || ''
+  }));
+
+  renderProducts();
+  renderCart();
+}
+
+/* EXIBIR E FILTRAR PRODUTOS */
+function renderProducts() {
+  const list = produtos.filter(p =>
+    (categoria === 'Todos' || p.categoria === categoria) &&
+    (`${p.nome} ${p.descricao || ''} ${p.categoria}`)
+      .toLowerCase()
+      .includes(busca.toLowerCase())
+  );
+
+  document.getElementById('grid').innerHTML = list.length
+    ? list.map(p => `
+      <article class="product">
+        <div class="photo">
+          ${p.imagem
+            ? `<img src="${esc(p.imagem)}" alt="${esc(p.nome)}" loading="lazy">`
+            : '🍾'}
+        </div>
+        <div class="info">
+          <span class="cat">${esc(p.categoria)}</span>
+          <h3>${esc(p.nome)}</h3>
+          <p>${esc(p.descricao || '')}</p>
+          <div class="bottom">
+            <span class="price">${brl(p.preco)}</span>
+            <button class="add" onclick="addCart(${p.id})">+ ADICIONAR</button>
+          </div>
+        </div>
+      </article>
+    `).join('')
+    : '<div class="empty">Nenhum produto encontrado.</div>';
+}
+
+document.getElementById('nav').onclick = e => {
+  const b = e.target.closest('button[data-cat]');
+  if (!b) return;
+
+  categoria = b.dataset.cat;
+
+  document.querySelectorAll('#nav button').forEach(x =>
+    x.classList.toggle('active', x === b)
+  );
+
+  renderProducts();
+};
+
+document.getElementById('searchForm').onsubmit = e => {
+  e.preventDefault();
+  busca = document.getElementById('search').value.trim();
+  renderProducts();
+};
+
+document.getElementById('search').oninput = e => {
+  busca = e.target.value.trim();
+  renderProducts();
+};
+
+/* CARRINHO */
+function addCart(id) {
+  carrinho[id] = (carrinho[id] || 0) + 1;
+  renderCart();
+}
+
+function changeQty(id, n) {
+  carrinho[id] = (carrinho[id] || 0) + n;
+  if (carrinho[id] <= 0) delete carrinho[id];
+  renderCart();
+}
+
+function sub() {
+  return Object.entries(carrinho).reduce((s, [id, q]) =>
+    s + (produtos.find(p => p.id === +id)?.preco || 0) * q, 0
+  );
+}
+
+function fee() {
+  return document.getElementById('tipo').value === 'entrega' &&
+    Object.keys(carrinho).length ? TAXA : 0;
+}
+
+function renderCart() {
+  const entries = Object.entries(carrinho).filter(([id, q]) =>
+    q > 0 && produtos.some(p => p.id === +id)
+  );
+
+  document.getElementById('count').textContent =
+    entries.reduce((s, [id, q]) => s + q, 0);
+
+  document.getElementById('cartlines').innerHTML = entries.length
+    ? entries.map(([id, q]) => {
+        const p = produtos.find(x => x.id === +id);
+
+        return `
+          <div class="cartline">
+            <div>
+              <b>${esc(p.nome)}</b>
+              <small>${brl(p.preco)} cada</small>
+              <div class="qty">
+                <button type="button" onclick="changeQty(${+id},-1)">−</button>
+                ${q}
+                <button type="button" onclick="changeQty(${+id},1)">+</button>
+              </div>
+            </div>
+            <b>${brl(p.preco * q)}</b>
+          </div>
+        `;
+      }).join('')
+    : '<div class="empty">Seu carrinho está vazio.</div>';
+
+  document.getElementById('totals').innerHTML = `
+    <div class="totalrow"><span>Subtotal</span><b>${brl(sub())}</b></div>
+    <div class="totalrow"><span>Entrega</span><b>${brl(fee())}</b></div>
+    <div class="totalrow final"><span>Total</span><b>${brl(sub() + fee())}</b></div>
+  `;
+}
+
+function openCart() {
+  document.getElementById('cart').classList.add('show');
+  renderCart();
+}
+
+function closeCart() {
+  document.getElementById('cart').classList.remove('show');
+}
+
+document.getElementById('tipo').onchange = () => {
+  const del = document.getElementById('tipo').value === 'entrega';
+
+  document.getElementById('enderecoLabel').classList.toggle('hide', !del);
+  document.getElementById('endereco').required = del;
+
+  renderCart();
+};
+
+document.getElementById('tipo').dispatchEvent(new Event('change'));
+
+/* FINALIZAR PEDIDO NO WHATSAPP */
+document.getElementById('checkout').onsubmit = e => {
+  e.preventDefault();
+
+  if (!Object.keys(carrinho).length) {
+    alert('Adicione produtos ao carrinho.');
+    return;
+  }
+
+  const tipo = document.getElementById('tipo').value;
+  const end = document.getElementById('endereco').value.trim();
+
+  if (tipo === 'entrega' && !end) {
+    alert('Informe o endereço de entrega.');
+    return;
+  }
+
+  const items = Object.entries(carrinho)
+    .filter(([id, q]) => q > 0)
+    .map(([id, q]) => {
+      const p = produtos.find(x => x.id === +id);
+      return `• ${p.nome} — ${q} x ${brl(p.preco)} = ${brl(p.preco * q)}`;
+    })
+    .join('\n');
+
+  const text = `Olá, Adega do Alemão! Gostaria de fazer um pedido:
+
+${items}
+
+Subtotal: ${brl(sub())}
+Entrega: ${brl(fee())}
+*TOTAL: ${brl(sub() + fee())}*
+
+Nome: ${document.getElementById('nomeCliente').value}
+Telefone: ${document.getElementById('telefoneCliente').value}
+Recebimento: ${tipo === 'entrega' ? 'Entrega' : 'Retirada na adega'}${tipo === 'entrega' ? '\nEndereço: ' + end : ''}${document.getElementById('obs').value ? '\nObservações: ' + document.getElementById('obs').value : ''}
+
+Podem confirmar a disponibilidade, por favor?`;
+
+  window.open(
+    'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text),
+    '_blank',
+    'noopener'
+  );
+};
+
+/* PAINEL ADMINISTRATIVO */
+function status(t, err = false) {
+  const el = document.getElementById('status');
+  el.textContent = t;
+  el.style.background = err ? '#ffe4e4' : '#f4f4f4';
+}
+
+function openAdmin() {
+  document.getElementById('admin').classList.add('show');
+  checkSession();
+}
+
+function closeAdmin() {
+  document.getElementById('admin').classList.remove('show');
+}
+
+async function checkSession() {
+  if (!db) {
+    status('Supabase não carregado. Confira internet e configuração.', true);
+    return;
+  }
+
+  const { data, error } = await db.auth.getSession();
+
+  if (error) {
+    status(error.message, true);
+    return;
+  }
+
+  adminUser = data.session?.user || null;
+  adminUI();
+
+  if (adminUser) {
+    status('Login ativo.');
+    loadAdmin();
+  } else {
+    status('Entre com o e-mail e senha cadastrados no Supabase.');
+  }
+}
+
+function adminUI() {
+  document.getElementById('login').classList.toggle('hide', !!adminUser);
+  document.getElementById('workspace').classList.toggle('hide', !adminUser);
+}
+
+document.getElementById('login').onsubmit = async e => {
+  e.preventDefault();
+
+  if (!db) {
+    status('Supabase não está conectado.', true);
+    return;
+  }
+
+  status('Entrando...');
+
+  const { data, error } = await db.auth.signInWithPassword({
+    email: document.getElementById('email').value,
+    password: document.getElementById('senha').value
+  });
+
+  if (error) {
+    status('Erro ao entrar: ' + error.message, true);
+    return;
+  }
+
+  adminUser = data.user;
+  adminUI();
+  loadAdmin();
+};
+
+async function logout() {
+  if (db) await db.auth.signOut();
+
+  adminUser = null;
+  adminUI();
+  cancelEdit();
+  status('Você saiu da área administrativa.');
+}
+
+async function loadAdmin() {
+  if (!adminUser) return;
+
+  const el = document.getElementById('adminlist');
+  el.textContent = 'Carregando...';
+
+  const { data, error } = await db.from(TABLE).select('*').order('nome');
+
+  if (error) {
+    el.textContent = 'Erro: ' + error.message;
+    status('Confira o SQL e o cadastro do administrador.', true);
+    return;
+  }
+
+  el.innerHTML = data.length
+    ? data.map(p => `
+      <div class="adminitem">
+        <img src="${esc(p.imagem_url || '')}" alt=""
+          onerror="this.style.visibility='hidden'">
+        <div>
+          <b>${esc(p.nome)} ${p.ativo ? '' : '(oculto)'}</b>
+          <small>${brl(p.preco)} • ${esc(p.categoria)}</small>
+        </div>
+        <div>
+          <button type="button" onclick="editProduct(${+p.id})">Editar</button>
+          <button type="button" class="danger" onclick="deleteProduct(${+p.id})">Excluir</button>
+        </div>
+      </div>
+    `).join('')
+    : '<p class="note">Nenhum produto cadastrado. Clique em Novo produto.</p>';
+}
+
+function newProduct() {
+  document.getElementById('productForm').reset();
+  document.getElementById('pid').value = '';
+  document.getElementById('pativo').checked = true;
+  document.getElementById('productForm').classList.remove('hide');
+}
+
+function cancelEdit() {
+  document.getElementById('productForm').classList.add('hide');
+  document.getElementById('productForm').reset();
+  document.getElementById('pid').value = '';
+}
+
+async function editProduct(id) {
+  const { data, error } = await db.from(TABLE).select('*').eq('id', id).single();
+
+  if (error) {
+    status(error.message, true);
+    return;
+  }
+
+  document.getElementById('pid').value = data.id;
+  document.getElementById('pnome').value = data.nome;
+  document.getElementById('ppreco').value = data.preco;
+  document.getElementById('pcat').value = data.categoria;
+  document.getElementById('pdesc').value = data.descricao || '';
+  document.getElementById('pativo').checked = data.ativo;
+  document.getElementById('pfoto').value = '';
+  document.getElementById('productForm').classList.remove('hide');
+}
+
+async function uploadPhoto(file) {
+  if (!file) return null;
+
+  if (file.size > 8 * 1024 * 1024) {
+    throw Error('A foto deve ter no máximo 8 MB.');
+  }
+
+  const ext = (file.name.split('.').pop() || 'jpg')
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '') || 'jpg';
+
+  const path = Date.now() + '-' +
+    Math.random().toString(36).slice(2) + '.' + ext;
+
+  const { error } = await db.storage.from(BUCKET).upload(path, file, {
+    contentType: file.type
+  });
+
+  if (error) throw error;
+
+  return db.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
+}
+
+document.getElementById('productForm').onsubmit = async e => {
+  e.preventDefault();
+
+  const btn = e.submitter;
+  btn.disabled = true;
+
+  try {
+    const id = document.getElementById('pid').value;
+    const file = document.getElementById('pfoto').files[0];
+    const image = file ? await uploadPhoto(file) : null;
+
+    const payload = {
+      nome: document.getElementById('pnome').value.trim(),
+      preco: Number(document.getElementById('ppreco').value),
+      categoria: document.getElementById('pcat').value,
+      descricao: document.getElementById('pdesc').value.trim(),
+      ativo: document.getElementById('pativo').checked,
+      atualizado_em: new Date().toISOString()
+    };
+
+    if (image) payload.imagem_url = image;
+
+    const res = id
+      ? await db.from(TABLE).update(payload).eq('id', +id)
+      : await db.from(TABLE).insert({ ...payload, imagem_url: image });
+
+    if (res.error) throw res.error;
+
+    status('Produto salvo com sucesso.');
+    cancelEdit();
+    await loadAdmin();
+    await loadProducts();
+
+  } catch (err) {
+    status('Erro ao salvar: ' + err.message, true);
+  } finally {
+    btn.disabled = false;
+  }
+};
+
+async function deleteProduct(id) {
+  if (!confirm('Excluir este produto?')) return;
+
+  const { error } = await db.from(TABLE).delete().eq('id', id);
+
+  if (error) {
+    status(error.message, true);
+    return;
+  }
+
+  await loadAdmin();
+  await loadProducts();
+}
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeCart();
+    closeAdmin();
+  }
+});
+
+loadProducts();
+</script>
+</body>
+</html>
